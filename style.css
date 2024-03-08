@@ -1,44 +1,55 @@
-.grid {
-  width: 100%;
+
+body {
+  background-color: rgb(2, 40, 60);
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+/*GRID*/
+
+.layout {
+  width: 100%; /* Why does using vw here extend past view width? */
+  height: 100vh; 
 
   display: grid;
   grid:
-    "title" 1fr
-    "image" 1fr
-    "listLeft" 1fr
-    "listRight" 1fr
-    "footer" 1fr
-    / 1fr;
+    "header header header" 1fr
+    "listsLeft image listsRight" 2fr
+    "footer footer footer" 1fr
+    / 1fr 1fr 1fr;
   gap: 5px;
 }
 
-.header { grid-area: header; }
-.image { grid-area: image; }
-.listLeft { grid-area: listLeft; }
-
-body {
-  background-color: bisque;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.title { 
-  grid-area: title; 
+.header { 
+  grid-area: header; 
   text-align: center;
 }
 
-img {
-  border: 2px solid;
-  border-radius: 5px;
-  width: 70vw;
-  height: auto;
-  padding: 5px;
-  background-color: rgb(16, 136, 145);
-}
-
-.listLeft { 
-  grid-area: listLeft; 
+.listsLeft {
+  grid-area: listsLeft;
   align-self: center;
   justify-self: center;
+  display: grid;
+  grid:
+  "week1 week2" 1fr
+  "week3 week4" 1fr
+  / 1fr 1fr
+}
+
+.listsRight {
+  grid-area: listsRight;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid:
+  "week1 week2" 1fr
+  "week3 week4" 1fr
+  / 1fr 1fr
 }
 
 .image { 
@@ -47,17 +58,14 @@ img {
   justify-self: center;
 }
 
-.listRight { 
-  grid-area: listRight; 
-  align-self: center;
-  justify-self: center;
-}
-
 .footer { 
   grid-area: footer; 
   text-align: center;
   align-self: center;
+  font-size: 15px;
 }
+
+/*END OF GRID*/
 
 h1, h2, h3 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -65,65 +73,39 @@ h1, h2, h3 {
 }
 
 h1 {
-  color: brown;
+  color: rgb(162, 27, 122);
   font-weight: bold;
+  font-size: 5em;
+  margin-bottom: 5px; /* Manually override H1 and H2 margins ro reduce empty space between elements*/
 }
 
 h2 {
-color: rgb(35, 177, 103);
+color: rgb(35, 177, 141);
+margin-top: 5px;
 }
 
 h3 {
-  color: rgb(217, 143, 32);
+  color: rgb(35, 177, 141);
+}  
+
+img {
+  border: 2px dashed;
+  border-radius: 10px;
+  width: 30vw;
+  height: auto;
+  padding: 10px;
 }
 
-#firstList {
-  color: blueviolet;
+.links {
+  margin-bottom: 5vh;
 }
 
-#secondList {
-color: rgb(138, 27, 90);
+#name {
+  color: rgb(162, 27, 122);
 }
 
-
-@media screen and (min-width: 60rem) { 
-  .container {
-    margin: 1em 2em;
-
-  .grid {
-    width: 100%;
-  
-    display: grid;
-    grid:
-      ". title ." 1fr
-      "listLeft image listRight" 2fr
-      ". footer ." 1fr
-      / 1fr 1fr 1fr;
-    gap: 5px;
-  }
-
-  .footer a {
-    font-size: 15px;
-    text-decoration: none;
-  }
-
-  img {
-    border: 5px solid;
-    border-radius: 10px;
-    width: 30vw;
-    height: auto;
-    padding: 10px;
-    background-color: rgb(16, 136, 145);
-  }
-
-  #footer a {
-    text-decoration: none;
-    font-size: 14px;
-  }
-
-  #links {
-    margin: 50px;
-  }
-
-  }
+#calendar {
+  height:30px;
+  width: 30px;
+  border: none;
 }
